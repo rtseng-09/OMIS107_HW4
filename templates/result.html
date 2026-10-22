@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ chain[0] }} to {{ chain[-1] }}{% endblock %}
+{% block content %}
+{% if chain|length == 1 %}
+<h1>Those are the same article</h1>
+<p class="lead">{{ chain[0] }} is zero clicks from itself.</p>
+{% else %}
+<h1>{{ chain[0] }} to {{ chain[-1] }}</h1>
+<p class="lead">
+  {{ chain|length - 1 }} click{{ "" if chain|length == 2 else "s" }} apart.
+  The search looked at {{ "{:,}".format(examined) }} article{{ "" if examined == 1 else "s" }}
+  in {{ "%.1f"|format(seconds) }} seconds.
+</p>
+
+<ol class="chain">
+  {% for title in chain %}
+  <li><a href="{{ title|wiki_url }}" target="_blank" rel="noopener">{{ title }}</a></li>
+  {% endfor %}
+</ol>
+{% endif %}
+
+<p><a class="button-link" href="{{ url_for('home') }}">Try another pair</a></p>
+{% endblock %}

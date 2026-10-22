@@ -1,0 +1,97 @@
+:root {
+  --bg: #f6f7f9;
+  --ink: #1c2230;
+  --muted: #5b6475;
+  --line: #c9cfdb;
+  --accent: #1d4ed8;
+  --error-bg: #fdeceb;
+  --error-ink: #8a1c14;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171f;
+    --ink: #e9ecf3;
+    --muted: #9aa3b5;
+    --line: #394156;
+    --accent: #7fa2ff;
+    --error-bg: #3a1c1a;
+    --error-ink: #ffb4ad;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 1.05rem/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main, .site-header, .site-footer {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.site-header { padding-top: 1.25rem; }
+.brand { font-weight: 600; color: var(--ink); text-decoration: none; }
+h1 {
+  font: 600 2rem/1.2 Georgia, "Times New Roman", serif;
+  margin: 2.5rem 0 0.75rem;
+}
+.lead { color: var(--muted); margin: 0 0 1.75rem; }
+label { display: block; font-weight: 600; margin: 1rem 0 0.25rem; }
+input[type="text"] {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+input:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+button, .button-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) {
+  button, .button-link { color: #0c1020; }
+}
+button:disabled { opacity: 0.6; cursor: progress; }
+.wait { color: var(--muted); margin: 0.75rem 0 0; }
+.error {
+  background: var(--error-bg);
+  color: var(--error-ink);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin: 0 0 1rem;
+}
+.chain {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--line);
+}
+.chain li { position: relative; padding: 0.35rem 0; }
+.chain li::before {
+  content: "";
+  position: absolute;
+  left: -2.1rem;
+  top: 0.95rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.chain a { color: var(--ink); font-weight: 600; }
+.site-footer { color: var(--muted); font-size: 0.9rem; padding-top: 2rem; padding-bottom: 2rem; }

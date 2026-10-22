@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>How many clicks apart are two articles?</h1>
+<p class="lead">Enter two Wikipedia articles. The site follows links between them and shows the shortest chain it finds.</p>
+
+{% if error %}
+<p class="error" role="alert">{{ error }}</p>
+{% endif %}
+
+<form id="search-form" action="{{ url_for('path') }}" method="get">
+  <label for="start">Start article</label>
+  <input id="start" name="start" type="text" value="{{ start }}" placeholder="Santa Clara University" required>
+
+  <label for="end">Target article</label>
+  <input id="end" name="end" type="text" value="{{ end }}" placeholder="Napoleon" required>
+
+  <button id="go" type="submit">Find the chain</button>
+  <p id="wait" class="wait" hidden>Searching Wikipedia. This can take up to 40 seconds.</p>
+</form>
+
+<script>
+  document.getElementById("search-form").addEventListener("submit", function () {
+    document.getElementById("go").disabled = true;
+    document.getElementById("wait").hidden = false;
+  });
+</script>
+{% endblock %}
